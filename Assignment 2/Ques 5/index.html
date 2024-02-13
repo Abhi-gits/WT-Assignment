@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form with Validation</title>
+    <style>
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+        }
+
+        button {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #submitBtn {
+            display: none;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Registration Form</h2>
+    <form id="registrationForm">
+        <table>
+            <tr>
+                <th>Name:</th>
+                <td><input type="text" id="name" name="name"></td>
+            </tr>
+            <tr>
+                <th>Age:</th>
+                <td><input type="number" id="age" name="age"></td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td><input type="email" id="email" name="email"></td>
+            </tr>
+            <tr>
+                <th>Phone No:</th>
+                <td><input type="tel" id="phone" name="phone"></td>
+            </tr>
+            <tr>
+                <th>Gender:</th>
+                <td>
+                    <input type="radio" id="male" name="gender" value="male"> <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="female"> <label for="female">Female</label>
+                </td>
+            </tr>
+            <tr>
+                <th>Hobbies:</th>
+                <td>
+                    <input type="checkbox" id="reading" name="hobbies" value="reading"> <label for="reading">Reading</label>
+                    <input type="checkbox" id="traveling" name="hobbies" value="traveling"> <label for="traveling">Traveling</label>
+                    <input type="checkbox" id="coding" name="hobbies" value="coding"> <label for="coding">Coding</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="button" onclick="reset()">Reset</button>
+                    <button type="button" onclick="check()">Check</button>
+                    <button type="submit" id="submitBtn">Submit</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        function reset() {
+            document.getElementById("registrationForm").reset();
+            document.getElementById("submitBtn").style.display = "none";
+        }
+
+        function check() {
+            var name = document.getElementById("name").value;
+            var age = document.getElementById("age").value;
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("phone").value;
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var hobbies = document.querySelectorAll('input[name="hobbies"]:checked');
+
+            var errorElement = document.getElementById("error");
+            var submitBtn = document.getElementById("submitBtn");
+
+            if (name === "" || age === "" || email === "" || phone === "" || !gender || hobbies.length === 0) {
+                errorElement.innerHTML = "Please fill in all fields.";
+                submitBtn.style.display = "none";
+            } else {
+                errorElement.innerHTML = "";
+                submitBtn.style.display = "inline";
+            }
+        }
+    </script>
+</body>
+</html>
