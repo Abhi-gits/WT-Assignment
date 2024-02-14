@@ -13,11 +13,17 @@
             margin-top: 20px;
             padding: 10px;
             cursor: pointer;
+            /* Button in center of the page */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
         }
     </style>
 </head>
 <body onclick="randomColor()">
-    <h1>Click anywhere on the body to change the background color</h1>
+    <h1>Click on button to change the background color</h1>
     <button onclick="randomColor()">Change Color</button>
 
     <script>
